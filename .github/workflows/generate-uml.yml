@@ -24,34 +24,24 @@ jobs:
         java-version: '11'
         distribution: 'zulu'  # Use 'zulu' as the Java distribution
     
-    - name: Download PlantUML ZIP archive from SourceForge
+    - name: Download PlantUML jar from official source
       run: |
-        # Download the ZIP archive of PlantUML from SourceForge
-        echo "Downloading PlantUML ZIP archive from SourceForge..."
-        curl -L -o plantuml.zip https://downloads.sourceforge.net/project/plantuml/plantuml.zip
+        # Download the correct PlantUML jar file directly from the official source
+        echo "Downloading PlantUML jar from official source..."
+        curl -L -o plantuml.jar https://github.com/plantuml/plantuml/releases/download/v1.2025/plantuml-1.2025.jar
         
-        # Check if the ZIP file was downloaded correctly
-        if [ ! -f plantuml.zip ]; then
-          echo "PlantUML ZIP file not downloaded successfully."
+        # Check if the jar file was downloaded correctly
+        if [ ! -f plantuml.jar ]; then
+          echo "PlantUML jar file not downloaded successfully."
           exit 1
         fi
         
         # Debugging: Show file details
         echo "Downloaded file details:"
-        ls -lh plantuml.zip
-        file plantuml.zip
+        ls -lh plantuml.jar
+        file plantuml.jar
         
-        # Unzip the downloaded file
-        echo "Unzipping PlantUML..."
-        unzip -q plantuml.zip
-        
-        # Verify the .jar file exists
-        if [ ! -f plantuml.jar ]; then
-          echo "plantuml.jar was not found in the extracted files."
-          exit 1
-        fi
-        
-        # Check that the file is a valid JAR file
+        # Check if the file is a valid Java archive (JAR)
         if ! file plantuml.jar | grep -q "Java archive"; then
           echo "Downloaded file is not a valid JAR file."
           exit 1
