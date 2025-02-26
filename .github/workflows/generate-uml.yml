@@ -27,6 +27,11 @@ jobs:
     - name: Download PlantUML jar
       run: |
         curl -L -o plantuml.jar https://repo1.maven.org/maven2/net/sourceforge/plantuml/plantuml/1.2025/plantuml-1.2025.jar
+        # Validate the jar file by checking the file size (it should not be 0 bytes)
+        if [ ! -s plantuml.jar ]; then
+          echo "Failed to download plantuml.jar"
+          exit 1
+        fi
     
     - name: Generate UML diagram
       run: |
