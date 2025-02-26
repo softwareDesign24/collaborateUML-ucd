@@ -1,6 +1,0 @@
-@startuml
-:User2: --> (Login2)
-:User2: --> (View Dashboard2)
-:User2: --> (Logout2)
-:Admin2: --> (Manage Users 2)
-@enduml
