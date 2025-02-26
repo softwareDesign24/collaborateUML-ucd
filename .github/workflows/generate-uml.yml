@@ -27,11 +27,23 @@ jobs:
         docker run --rm \
           -v $(pwd):/workspace \
           plantuml/plantuml use-case.puml  # Change the file name if necessary
+        
+        # List the contents of the current directory to check if the image was generated
+        echo "Listing files after UML generation:"
+        ls -l
+        
+        # Check if the PNG file was generated
+        if [ ! -f use-case.png ]; then
+          echo "Error: use-case.png not found."
+          exit 1
+        fi
 
     - name: Commit generated UML diagram
       run: |
         git config --global user.name "github-actions"
         git config --global user.email "github-actions@github.com"
-        git add use-case.png  # Generated image
+        
+        # Add the generated PNG file and commit it
+        git add use-case.png
         git commit -m "Automated UML diagram generation"
         git push
