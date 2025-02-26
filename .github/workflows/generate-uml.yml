@@ -35,7 +35,7 @@ jobs:
         echo "Generating UML diagram..."
         docker run --rm \
           -v $(pwd):/workspace \
-          plantuml/plantuml -tpng /workspace/diagrams/use-case.puml  # Explicitly specify output file format
+          plantuml/plantuml -tpng /workspace/use-case.puml -o /workspace/images/
         
         # List files to check if the diagram is generated
         echo "Listing files after UML generation:"
