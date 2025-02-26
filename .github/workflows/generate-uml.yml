@@ -24,12 +24,12 @@ jobs:
         java-version: '11'
         distribution: 'zulu'  # Use 'zulu' as the Java distribution
     
-    - name: Download PlantUML jar directly
+    - name: Download PlantUML jar directly from SourceForge
       run: |
-        echo "Downloading PlantUML JAR file from official PlantUML GitHub release..."
-        
-        # Download the direct .jar file from GitHub releases
-        curl -L -o plantuml.jar https://github.com/plantuml/plantuml/releases/download/v1.2023.10/plantuml-1.2023.10.jar
+        echo "Downloading PlantUML JAR file from SourceForge..."
+
+        # Directly downloading from the SourceForge mirror, this link should fetch the correct .jar file
+        curl -L -o plantuml.jar https://sourceforge.net/projects/plantuml/files/plantuml.jar/download
         
         # Check if the jar file was downloaded correctly
         if [ ! -f plantuml.jar ]; then
