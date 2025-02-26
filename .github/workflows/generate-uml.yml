@@ -24,10 +24,10 @@ jobs:
         java-version: '11'
         distribution: 'zulu'  # Use 'zulu' as the Java distribution
     
-    - name: Download PlantUML jar from official source
+    - name: Download PlantUML jar from GitHub Releases
       run: |
-        # Download the correct PlantUML jar file directly from the official source
-        echo "Downloading PlantUML jar from official source..."
+        # Download the PlantUML jar file directly from GitHub Releases
+        echo "Downloading PlantUML jar from GitHub Releases..."
         curl -L -o plantuml.jar https://github.com/plantuml/plantuml/releases/download/v1.2025/plantuml-1.2025.jar
         
         # Check if the jar file was downloaded correctly
