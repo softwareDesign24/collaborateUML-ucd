@@ -22,7 +22,8 @@ jobs:
       uses: actions/setup-java@v2
       with:
         java-version: '11'
-
+        distribution: 'adoptopenjdk'  # Add this line for specifying the distribution
+    
     - name: Download PlantUML jar
       run: |
         curl -L -o plantuml.jar https://netmirror.dk/plantuml/plantuml.jar
