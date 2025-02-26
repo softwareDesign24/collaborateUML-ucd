@@ -1,0 +1,40 @@
+name: Generate UML Diagrams from PlantUML
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - '**/*.puml'  # Trigger only if PlantUML files are changed
+  pull_request:
+    paths:
+      - '**/*.puml'
+
+jobs:
+  generate-uml:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+    
+    - name: Set up Java (required for PlantUML)
+      uses: actions/setup-java@v2
+      with:
+        java-version: '11'
+
+    - name: Download PlantUML jar
+      run: |
+        curl -L -o plantuml.jar https://netmirror.dk/plantuml/plantuml.jar
+    
+    - name: Generate UML diagram
+      run: |
+        java -jar plantuml.jar -tpng use-case.puml  # Change file name as needed
+    
+    - name: Commit generated UML diagram
+      run: |
+        git config --global user.name "github-actions"
+        git config --global user.email "github-actions@github.com"
+        git add use-case.png  # Generated image
+        git commit -m "Automated UML diagram generation"
+        git push
