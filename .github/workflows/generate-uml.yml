@@ -43,16 +43,16 @@ jobs:
           exit 1
         fi
 
-- name: Commit generated UML diagram
-  run: |
-    git config --global user.name "github-actions"
-    git config --global user.email "github-actions@github.com"
-    
-    # Add the generated PNG file and commit it
-    git add use-case.png
-    git commit -m "Automated UML diagram generation"
-    
-    # Authenticate using the GITHUB_TOKEN
-    git push https://github.com/${{ github.repository }}.git HEAD:${{ github.ref }} 
-  env:
-    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Commit generated UML diagram
+      run: |
+        git config --global user.name "github-actions"
+        git config --global user.email "github-actions@github.com"
+          
+        # Add the generated PNG file and commit it
+        git add use-case.png
+        git commit -m "Automated UML diagram generation"
+          
+        # Authenticate using the GITHUB_TOKEN
+        git push https://github.com/${{ github.repository }}.git HEAD:${{ github.ref }} 
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
