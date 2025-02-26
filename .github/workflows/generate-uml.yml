@@ -21,4 +21,41 @@ jobs:
     - name: Set up Java (required for PlantUML)
       uses: actions/setup-java@v2
       with:
-        java-version
+        java-version: '11'
+        distribution: 'zulu'  # Use 'zulu' as the Java distribution
+    
+    - name: Download PlantUML jar directly
+      run: |
+        echo "Downloading PlantUML JAR file from GitHub releases..."
+        
+        # Direct download URL for the PlantUML jar file
+        curl -L -o plantuml.jar https://downloads.sourceforge.net/project/plantuml/plantuml.jar
+        
+        # Check if the jar file was downloaded correctly
+        if [ ! -f plantuml.jar ]; then
+          echo "PlantUML jar file not downloaded successfully."
+          exit 1
+        fi
+        
+        # Show details of the downloaded file
+        echo "Downloaded file details:"
+        ls -lh plantuml.jar
+        file plantuml.jar
+        
+        # Check if the file is a valid Java archive (JAR)
+        if ! file plantuml.jar | grep -q "Java archive"; then
+          echo "Downloaded file is not a valid JAR file."
+          exit 1
+        fi
+
+    - name: Generate UML diagram
+      run: |
+        java -jar plantuml.jar -tpng use-case.puml  # Change file name as needed
+    
+    - name: Commit generated UML diagram
+      run: |
+        git config --global user.name "github-actions"
+        git config --global user.email "github-actions@github.com"
+        git add use-case.png  # Generated image
+        git commit -m "Automated UML diagram generation"
+        git push
