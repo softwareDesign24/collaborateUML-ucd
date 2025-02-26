@@ -26,10 +26,19 @@ jobs:
     
     - name: Download PlantUML jar
       run: |
+        # Download the PlantUML jar file from the official source
         curl -L -o plantuml.jar https://repo1.maven.org/maven2/net/sourceforge/plantuml/plantuml/1.2025/plantuml-1.2025.jar
-        # Validate the jar file by checking the file size (it should not be 0 bytes)
-        if [ ! -s plantuml.jar ]; then
-          echo "Failed to download plantuml.jar"
+
+        # Ensure the jar file was downloaded correctly
+        if [ ! -f plantuml.jar ]; then
+          echo "PlantUML jar file not downloaded successfully."
+          exit 1
+        fi
+        
+        # Check if the file is valid and not zero bytes
+        FILE_SIZE=$(stat -c %s plantuml.jar)
+        if [ $FILE_SIZE -eq 0 ]; then
+          echo "Downloaded plantuml.jar is empty. Please check the download source."
           exit 1
         fi
     
