@@ -24,10 +24,10 @@ jobs:
         java-version: '11'
         distribution: 'zulu'  # Use 'zulu' as the Java distribution
     
-    - name: Download PlantUML jar from Maven Central
+    - name: Download PlantUML jar from GitHub releases
       run: |
-        # Download the official PlantUML jar from Maven Central
-        curl -L -o plantuml.jar https://repo1.maven.org/maven2/net/sourceforge/plantuml/plantuml/1.2025/plantuml-1.2025.jar
+        # Download the latest stable PlantUML jar from GitHub releases
+        curl -L -o plantuml.jar https://github.com/plantuml/plantuml/releases/download/v1.2025/plantuml-1.2025.jar
         
         # Ensure the jar file is downloaded correctly
         if [ ! -f plantuml.jar ]; then
