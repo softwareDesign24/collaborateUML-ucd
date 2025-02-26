@@ -26,9 +26,9 @@ jobs:
     
     - name: Download PlantUML jar from GitHub Releases
       run: |
-        # Download the PlantUML jar file directly from GitHub Releases
+        # Download the correct PlantUML jar file directly from GitHub Releases
         echo "Downloading PlantUML jar from GitHub Releases..."
-        curl -L -o plantuml.jar https://github.com/plantuml/plantuml/releases/download/v1.2025/plantuml-1.2025.jar
+        curl -L -o plantuml.jar https://github.com/plantuml/plantuml/releases/download/v1.2023.10/plantuml-1.2023.10.jar
         
         # Check if the jar file was downloaded correctly
         if [ ! -f plantuml.jar ]; then
