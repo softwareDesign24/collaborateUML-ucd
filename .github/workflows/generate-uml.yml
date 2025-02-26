@@ -24,18 +24,18 @@ jobs:
         java-version: '11'
         distribution: 'zulu'  # Use 'zulu' as the Java distribution
     
-    - name: Download PlantUML jar
+    - name: Download PlantUML jar from GitHub releases
       run: |
-        # Download the PlantUML jar file from the official source
-        curl -L -o plantuml.jar https://repo1.maven.org/maven2/net/sourceforge/plantuml/plantuml/1.2025/plantuml-1.2025.jar
-
-        # Ensure the jar file was downloaded correctly
+        # Download the latest stable PlantUML jar from the GitHub releases page
+        curl -L -o plantuml.jar https://github.com/plantuml/plantuml/releases/download/v1.2025/plantuml-1.2025.jar
+        
+        # Ensure the jar file is downloaded correctly
         if [ ! -f plantuml.jar ]; then
           echo "PlantUML jar file not downloaded successfully."
           exit 1
         fi
-        
-        # Check if the file is valid and not zero bytes
+
+        # Check the file size to ensure it's valid
         FILE_SIZE=$(stat -c %s plantuml.jar)
         if [ $FILE_SIZE -eq 0 ]; then
           echo "Downloaded plantuml.jar is empty. Please check the download source."
@@ -49,7 +49,4 @@ jobs:
     - name: Commit generated UML diagram
       run: |
         git config --global user.name "github-actions"
-        git config --global user.email "github-actions@github.com"
-        git add use-case.png  # Generated image
-        git commit -m "Automated UML diagram generation"
-        git push
+        git config --global user.email "github-actions@github.c
