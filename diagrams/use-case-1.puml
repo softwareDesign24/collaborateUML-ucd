@@ -1,6 +1,6 @@
 @startuml
 :User: --> (Login)
 :User: --> (View Dashboard)
-:User: --> (Logout)
+:User: --> (Logout!)
 :Admin: --> (Manage Users)
 @enduml
