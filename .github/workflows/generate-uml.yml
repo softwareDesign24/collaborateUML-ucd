@@ -18,26 +18,22 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
     
+    - name: List all files to verify .puml location
+      run: |
+        echo "Listing all files in the repository..."
+        ls -R # This lists all files and subdirectories recursively
+
     - name: Set up Docker
       uses: docker/setup-buildx-action@v2
     
-    - name: Verify .puml file exists
-      run: |
-        echo "Checking if the .puml file exists..."
-        if [ ! -f use-case.puml ]; then
-          echo "Error: use-case.puml not found!"
-          exit 1
-        fi
-
     - name: Generate UML diagram using Docker and PlantUML
       run: |
-        # Ensure output file name and format are specified
         echo "Generating UML diagram..."
         docker run --rm \
           -v $(pwd):/workspace \
-          plantuml/plantuml -tpng /workspace/use-case.puml -o /workspace/images/
+          plantuml/plantuml -tpng /workspace/use-case.puml  # Explicitly specify output file format
         
-        # List files to check if the diagram is generated
+        # List files after UML generation
         echo "Listing files after UML generation:"
         ls -l
         
