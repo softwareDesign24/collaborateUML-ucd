@@ -24,24 +24,38 @@ jobs:
         java-version: '11'
         distribution: 'zulu'  # Use 'zulu' as the Java distribution
     
-    - name: Download PlantUML jar from GitHub Releases
+    - name: Download PlantUML (check if it's a ZIP)
       run: |
-        # Download the correct PlantUML jar file directly from GitHub Releases
-        echo "Downloading PlantUML jar from GitHub Releases..."
-        curl -L -o plantuml.jar https://github.com/plantuml/plantuml/releases/download/v1.2023.10/plantuml-1.2023.10.jar
+        echo "Downloading PlantUML from GitHub releases..."
         
-        # Check if the jar file was downloaded correctly
-        if [ ! -f plantuml.jar ]; then
-          echo "PlantUML jar file not downloaded successfully."
+        # Download the PlantUML ZIP file (just in case)
+        curl -L -o plantuml.zip https://github.com/plantuml/plantuml/releases/download/v1.2023.10/plantuml-1.2023.10.zip
+        
+        # Check if the ZIP file was downloaded correctly
+        if [ ! -f plantuml.zip ]; then
+          echo "PlantUML zip file not downloaded successfully."
           exit 1
         fi
         
-        # Debugging: Show file details
-        echo "Downloaded file details:"
+        # Unzip the downloaded file if it's a ZIP
+        echo "Unzipping PlantUML..."
+        unzip -q plantuml.zip -d plantuml
+        
+        # Check if the JAR file exists after extraction
+        if [ ! -f plantuml/plantuml.jar ]; then
+          echo "PlantUML jar file not found after unzipping."
+          exit 1
+        fi
+        
+        # Move the JAR file to the root directory
+        mv plantuml/plantuml.jar plantuml.jar
+        
+        # Check the JAR file
+        echo "Downloaded and unzipped file details:"
         ls -lh plantuml.jar
         file plantuml.jar
         
-        # Check if the file is a valid Java archive (JAR)
+        # Validate that it's a valid JAR file
         if ! file plantuml.jar | grep -q "Java archive"; then
           echo "Downloaded file is not a valid JAR file."
           exit 1
