@@ -21,14 +21,23 @@ jobs:
     - name: Set up Docker
       uses: docker/setup-buildx-action@v2
     
+    - name: Verify .puml file exists
+      run: |
+        echo "Checking if the .puml file exists..."
+        if [ ! -f use-case.puml ]; then
+          echo "Error: use-case.puml not found!"
+          exit 1
+        fi
+
     - name: Generate UML diagram using Docker and PlantUML
       run: |
-        # Run PlantUML Docker container to generate the diagram
+        # Ensure output file name and format are specified
+        echo "Generating UML diagram..."
         docker run --rm \
           -v $(pwd):/workspace \
-          plantuml/plantuml use-case.puml  # Change the file name if necessary
+          plantuml/plantuml -tpng /workspace/use-case.puml  # Explicitly specify output file format
         
-        # List the contents of the current directory to check if the image was generated
+        # List files to check if the diagram is generated
         echo "Listing files after UML generation:"
         ls -l
         
