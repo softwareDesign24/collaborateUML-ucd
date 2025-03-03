@@ -6,4 +6,5 @@ left to right direction
 :User: --> (View Dashboard)
 :User: --> (Logout)
 :Admin: --> (Manage Users)
+
 @enduml
