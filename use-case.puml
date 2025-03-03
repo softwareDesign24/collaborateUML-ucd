@@ -12,9 +12,9 @@ rectangle "To Koutouki tou Manousou" {
   usecase "Manage Users" as UC4
 }
 
-usr --> UC1
-usr --> UC2
-usr --> UC3
-admin -up-> UC4
+usr -- UC1
+usr -- UC2
+usr -- UC3
+admin -up- UC4
 
 @enduml
