@@ -5,7 +5,7 @@ left to right direction
 actor "User" as usr
 actor "Administrator" as admin
 
-rectangle System {
+rectangle "Ταβέρνα Ο ΜΠΑΡΜΠΑΜΗΤΣΟΣ" {
   usecase "Login" as UC1
   usecase "View Dashboard" as UC2
   usecase "Logout" as UC3
