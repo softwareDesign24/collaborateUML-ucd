@@ -1,4 +1,4 @@
-# Testing Use Case Diagrams
+# Collaborative exercise on Use Case Diagrams
 
 ![Use Case Diagram](use-case.png)
 
