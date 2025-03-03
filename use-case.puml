@@ -2,9 +2,19 @@
 
 left to right direction
 
-:User: --> (Login)
-:User: --> (View Dashboard)
-:User: --> (Logout)
-:Admin: --> (Manage Users)
+actor "User" as usr
+actor "Administrator" as admin
+
+rectangle System {
+  usecase "Login" as UC1
+  usecase "View Dashboard" as UC2
+  usecase "Logout" as UC3
+  usecase "Manage Users" as UC4
+}
+
+usr --> UC1
+usr --> UC2
+usr --> UC3
+admin --> UC4
 
 @enduml
