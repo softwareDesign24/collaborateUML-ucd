@@ -15,6 +15,6 @@ rectangle System {
 usr --> UC1
 usr --> UC2
 usr --> UC3
-admin -up --> UC4
+admin -left --> UC4
 
 @enduml
