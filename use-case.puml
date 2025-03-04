@@ -23,4 +23,24 @@ admin -up- UC4
 UC1 .> UC5 : include
 UC6 .> UC1 : extends
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 @enduml
