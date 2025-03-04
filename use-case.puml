@@ -17,4 +17,7 @@ usr -- UC2
 usr -- UC3
 admin -up- UC4
 
+UC1 .> (Inform Message) : include
+(Failure Message) .> UC1 : extends
+
 @enduml
