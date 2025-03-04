@@ -13,7 +13,6 @@ rectangle "To Koutouki tou Manousou" {
   usecase "Manage Users" as UC4
   usecase "Inform Message" as UC5
   usecase "Failure Message" as UC6
-  usecase "Ultimate Failure Message" as UC7
 }
 
 usr -- UC1
