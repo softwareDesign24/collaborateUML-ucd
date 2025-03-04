@@ -10,6 +10,9 @@ rectangle "To Koutouki tou Manousou" {
   usecase "View Dashboard" as UC2
   usecase "Logout" as UC3
   usecase "Manage Users" as UC4
+  usecase "Inform Message" as UC5
+  usecase "Failure Message" as UC6
+
 }
 
 usr -- UC1
@@ -17,7 +20,7 @@ usr -- UC2
 usr -- UC3
 admin -up- UC4
 
-UC1 .> (Inform Message) : include
-(Failure Message) .> UC1 : extends
+UC1 .> UC5 : include
+UC6 .> UC1 : extends
 
 @enduml
