@@ -3,6 +3,7 @@
 left to right direction
 
 actor "User" as usr
+actor "Silver User" as s_usr
 actor "Administrator" as admin
 
 rectangle "To Koutouki tou Manousou" {
@@ -12,7 +13,7 @@ rectangle "To Koutouki tou Manousou" {
   usecase "Manage Users" as UC4
   usecase "Inform Message" as UC5
   usecase "Failure Message" as UC6
-
+  usecase "Ultimate Failure Message" as UC7
 }
 
 usr -- UC1
@@ -23,7 +24,8 @@ admin -up- UC4
 UC1 .> UC5 : include
 UC6 .> UC1 : extends
 
-
+usr <|-- s_usr
+UC6 <|-- UC7
 
 
 
