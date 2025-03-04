@@ -25,7 +25,6 @@ UC1 .> UC5 : include
 UC6 .> UC1 : extends
 
 usr <|-- s_usr
-UC6 <|-- UC7
 
 
 
