@@ -21,6 +21,7 @@ usr -- UC3
 admin -up- UC4
 
 UC1 .> UC5 : include
+UC3 .> UC5 : include
 UC6 .> UC1 : extends
 
 usr <|-- s_usr
