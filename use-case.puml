@@ -18,7 +18,8 @@ rectangle "To Koutouki tou Manousou" {
 
 
 
-
+   usecase "Create" as UC13
+   usecase "Recovery" as UC14
 
 
 
@@ -40,7 +41,7 @@ admin -up- UC3
 
 
 
-
+r_usr -- UC13
 
 
 
