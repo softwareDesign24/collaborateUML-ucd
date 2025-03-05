@@ -14,8 +14,8 @@ rectangle "To Koutouki tou Manousou" {
   usecase "Inform Message" as UC4
   usecase "Failure Message" as UC5
 
-
-
+  usecase "Share Content" as UCSC
+  usercase "Search Platform" as UCSP
 
 
 
@@ -36,7 +36,8 @@ usr -- UC1
 usr -- UC2
 admin -up- UC3
 
-
+r_usr -- UCSC
+r_usr -- UCSP
 
 
 
