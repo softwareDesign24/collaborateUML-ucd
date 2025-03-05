@@ -22,7 +22,8 @@ rectangle "To Koutouki tou Manousou" {
 
 
 
-
+usecase "Login User" as ee1
+usecase "Helpdesk" as ee2
 
 
 
@@ -43,6 +44,8 @@ admin -up- UC3
 
 
 
+r_usr -- ee1
+hlpdsk -- ee2
 
 
 
