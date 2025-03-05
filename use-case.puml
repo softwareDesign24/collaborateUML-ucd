@@ -3,8 +3,9 @@
 left to right direction
 
 actor "User" as usr
-actor "Silver User" as s_usr
-actor "Administrator" as admin
+actor "Helpdesk" as hlpdsk
+actor "Registered User" as r_usr
+usr <|-- r_usr
 
 rectangle "To Koutouki tou Manousou" {
   usecase "Login" as UC1
@@ -12,17 +13,55 @@ rectangle "To Koutouki tou Manousou" {
   usecase "Manage Users" as UC3
   usecase "Inform Message" as UC4
   usecase "Failure Message" as UC5
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
 usr -- UC1
 usr -- UC2
 admin -up- UC3
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 UC1 .> UC4 : include
 UC2 .> UC4 : include
 UC5 .> UC1 : extends
 
-usr <|-- s_usr
+
 
 
 
