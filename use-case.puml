@@ -26,6 +26,8 @@ rectangle "To Koutouki tou Manousou" {
 
 
 
+  usecase "Send email" as meropi5
+  usecase "User not found" as meropi6
 
 
 
@@ -48,10 +50,10 @@ admin -up- UC3
 
 
 
-
-
-
-
+r_usr -- meropi5
+r_usr -- meropi6
+hlpdsk -- meropi6
+meropi5 .> meropi6 : include
 
 
 
